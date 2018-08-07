@@ -43,10 +43,14 @@ public class Main {
         employeeCredString.close();
 
         while (loginAttempts <= 2) {
-            System.out.println("Please enter your username: ");
+            System.out.println("Please enter your username or enter 'q' to quit: ");
             userName = inputScan.nextLine();
-            System.out.println("Please enter your password: ");
+            System.out.println("Please enter your password or enter 'q' to quit: ");
             userPass = inputScan.nextLine();
+            if (userName.equalsIgnoreCase("q") || userPass.equalsIgnoreCase("q")) {
+                System.out.println("Thank you for using the Authentication Program, have a nice day!");
+                break;
+            }
             verifyPass = hashPassword.convertToMD5Hash(userPass);
             if (readFromFile.ReadFileContents("credential_file.txt").contains(verifyPass) && readFromFile.ReadFileContents("credential_file.txt").contains(userName)) {
                 if (griffin.contains(verifyPass) && griffin.contains(userName)) {
@@ -63,7 +67,7 @@ public class Main {
                     readFromFile.PrintFileContents("admin.txt");
                 } else {
                     if (loginAttempts < 2) {
-                        System.out.println("Incorrect username and/or password combination. Please try again.");
+                        System.out.println("Incorrect username and/or password combination. Please try again.\n");
                         loginAttempts++;
                         continue;
                     } else {
@@ -73,7 +77,7 @@ public class Main {
                     }
                 }
             } else if (loginAttempts < 2) {
-                System.out.println("Incorrect username and/or password combination. Please try again.");
+                System.out.println("Incorrect username and/or password combination. Please try again.\n");
                 loginAttempts++;
                 continue;
             } else {
