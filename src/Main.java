@@ -55,7 +55,7 @@ public class Main {
 		String tempLine = null;
 		while ((tempLine = br.readLine()) != null) {
 			//Loop through all of the lines in the credential_file
-			System.out.println(tempLine);
+			//System.out.println(tempLine);
 			
 			//Split the line and construct new employee to add to the this
 			String temp[] = splitInput(tempLine);
